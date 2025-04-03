@@ -2,7 +2,7 @@
   <Generic :item="item" class="webhook">
     <template #content>
       <div class="is-flex is-align-items-center">
-        <p class="title is-4">
+        <p class="title is-4 is-flex-shrink-0 mr-6">
           {{ item.name }}
         </p>
         <div v-if="isTypeService" class="ml-auto status" :class="status">
