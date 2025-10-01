@@ -6,7 +6,14 @@ import eslintConfigPrettier from "@vue/eslint-config-prettier";
 /** @type {import('eslint').Linter.Config[]} */
 export default [
   { files: ["**/*.{js,mjs,cjs,vue}"] },
-  { languageOptions: { globals: globals.browser } },
+  {
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        __APP_VERSION__: "readable",
+      },
+    },
+  },
   pluginJs.configs.recommended,
   ...pluginVue.configs["flat/recommended"],
   eslintConfigPrettier,
@@ -18,6 +25,6 @@ export default [
     },
   },
   {
-    ignores: ['**/dist/**', '**/dist-ssr/**', '**/coverage/**'],
+    ignores: ["**/dist/**", "**/dist-ssr/**", "**/coverage/**"],
   },
 ];

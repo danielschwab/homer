@@ -54,7 +54,8 @@ export default {
 
         if (!success) {
           throw new Error(
-            `Ping: target not available (${response.status} error)`,
+            `Fail to fetch ressource: (${response.status} error)`,
+            { cause: response },
           );
         }
 
