@@ -15,6 +15,10 @@ jobs:
       -
         name: Checkout
         uses: actions/checkout@v4
+      - 
+        name: get-npm-version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@v1.3.1
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -36,7 +40,7 @@ jobs:
           push: true
           tags: |
             ghcr.io/${{ github.repository }}:latest
-            ghcr.io/${{ github.repository }}:${{ github.ref_name }}
+            ghcr.io/${{ github.repository }}:${{ steps.package-version.outputs.current-version}}
           platforms: linux/amd64
           build-args: |
             VERSION_TAG=${{ github.ref_name }}
